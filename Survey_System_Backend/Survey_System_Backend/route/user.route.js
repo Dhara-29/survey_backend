@@ -1,5 +1,5 @@
 import express from "express";
-import { getUserById, userSignIn, userSignUp } from "../controller/user.controller.js";
+import { userSignIn, userSignUp } from "../controller/user.controller.js";
 import jwt from "jsonwebtoken"; // Ensure that JWT is imported
 
 const app = express.Router();
@@ -33,5 +33,5 @@ app.post("/userSignUp", userSignUp);
 
 // /userSignIn does not require authentication since it's for login
 app.post("/userSignIn", userSignIn);
-app.get('/getUserById',getUserById);
+
 export default app;

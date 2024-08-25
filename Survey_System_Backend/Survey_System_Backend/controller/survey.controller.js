@@ -131,24 +131,3 @@ export const viewParticularSurveyByTitle = async (req, res, next) => {
 
 }
 
-export const getSurveysByUserId = async (req, res, next) => {
-    try {
-        const userId = req.body; // Get userId from the request parameters
-
-        // Fetch surveys for the specific user
-        const surveys = await Survey.findAll({
-            where: { userId: userId }, // Filter surveys by userId
-            
-        });
-
-        // Check if any surveys were found
-        if (surveys.length === 0) {
-            return res.status(404).json({ message: 'No surveys found for this user' });
-        }
-
-        // Respond with the list of surveys
-        res.status(200).json(surveys);
-    } catch (error) {
-        res.status(500).json({ error: 'Error fetching surveys', details: error.message });
-    }
-};
